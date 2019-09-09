@@ -14,6 +14,7 @@ declareChildApplication('iframe-vanilla-js', () => import('src/vanillajs/vanilla
 declareChildApplication('inferno', () => import('src/inferno/inferno.app.js'), pathPrefix('/inferno'));
 declareChildApplication('cyclejs', () => import('src/cyclejs/cycle.app.js'), pathPrefix('/cycle'));
 declareChildApplication('ember', () => loadEmberApp("ember-app", '/build/ember-app/assets/ember-app.js', '/build/ember-app/assets/vendor.js'), pathPrefix('/ember'));
+declareChildApplication('custom', () => import('src/custom-app/custom.app.js'), pathPrefix('/custom'));
 
 start();
 

@@ -112,6 +112,11 @@ function menuItems() {
           Ember
         </a>
       </li>
+        <li>
+        <a onClick={() => this.navigateTo("/custom")}>
+          Custom
+        </a>
+      </li>
     </div>
   )
 }
