@@ -19,6 +19,13 @@ export default class Root extends React.Component {
     }
 
     componentDidMount() {
+        // if(!this.state.busy){
+        //     const script = document.getElementById('client-script').innerHTML;
+        //     const script1 = document.getElementById('jqueryy').innerHTML;
+        //     window.eval(script1);
+        //     window.eval(script);
+        // }
+
     }
 
     getData() {
@@ -28,10 +35,16 @@ export default class Root extends React.Component {
         this.setState({busy: true});
         const result = fetch(url)
             .then(function (response) {
-                return response.json();
+                return response.text();
             })
             .then(function (myJson) {
-                _self.data = JSON.stringify(myJson);
+                // Initialize the DOM parser
+                var parser = new DOMParser();
+
+                console.log(myJson);
+                // Parse the text
+                var doc = parser.parseFromString(myJson, "text/html");
+                _self.data = myJson;
                 _self.setState({busy: false});
             });
 
@@ -40,8 +53,8 @@ export default class Root extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Hello {this.data}</h1>
+            <div dangerouslySetInnerHTML={{__html: this.data}}>
+                {/*<h1>Hello</h1>*/}
             </div>
         );
     }
